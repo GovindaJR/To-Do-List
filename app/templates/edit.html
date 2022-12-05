@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <form method="POST">
+            <label>Task:</label>
+            <input type="text" value="{{task.task}}" name="edit_field">
+            <input type="submit" value="Update" name="update">
+            <input type="submit" value="Delete" name="delete">
+        </form>
+        <br>
+        <label> <a href="/">Back</a></label>
+    </div>
+
+{% endblock %}

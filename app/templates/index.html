@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>To-Do List</h1>
+    <div>
+        <form action="/" method="POST">
+            {{form.add_task.label}}:
+            {{form.add_task(placeholder="Enter task here")}}
+            {{form.submit}}
+        </form>
+    </div>
+    <br>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Date</th>
+                <th>Task</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            {% for task in Task.query.all() %}
+            <tr>
+                <td>{{task.time_posted}}</td>
+                <td>{{task.task}}</td>
+                <td>{{form.check_completion}} </td>
+                <td><a href="/edit/{{task.id}}">Edit</a></td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+{% endblock %}
